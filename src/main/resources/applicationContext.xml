@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="coordinatesOfPointBean"
+        class="com.lab_scene_xml.coordinates.Coordinates">
+        <property name="x" value="1"/>
+        <property name="y" value="2"/>
+    </bean>
+
+    <bean id="coordinatesOfCircle"
+        class="com.lab_scene_xml.coordinates.Coordinates">
+        <property name="x" value="5"/>
+        <property name="y" value="5"/>
+    </bean>
+
+    <bean id="pointBean"
+        class="com.lab_scene_xml.graphical_objects.Point"
+        scope="prototype">
+        <property name="color" value="red"/>
+        <property name="coordinates" ref="coordinatesOfPointBean"/>
+    </bean>
+
+    <bean id="circleBean"
+        class="com.lab_scene_xml.graphical_objects.Circle"
+        scope="prototype">
+        <property name="color" value="blue"/>
+        <property name="coordinates" ref="coordinatesOfCircle"/>
+    </bean>
+
+    <bean id="sceneBean"
+        class="com.lab_scene_xml.scene.Scene">
+        <property name="graphicalObjects">
+            <list>
+                <ref bean="pointBean"/>
+                <ref bean="circleBean"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
